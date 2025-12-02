@@ -1,25 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>Pink Polaroid Embed</title>
-    <style>
-      body {
-        margin: 0;
-        padding: 0;
-        overflow: hidden;
-      }
-      iframe {
-        width: 100vw;
-        height: 100vh;
-        border: none;
-      }
-    </style>
-  </head>
-  <body>
-    <iframe src="https://embed.streamlit.app/https://pink-polaroid.streamlit.app"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-></iframe>
-
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pink Polaroid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f9b3ff 0%, #ffb8c7 40%, #ffe0b5 100%);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    .card {
+      background: #fff7fb;
+      padding: 32px 40px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+      text-align: center;
+      max-width: 420px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 26px;
+      color: #ff2c95;
+    }
+    p {
+      margin: 0 0 20px;
+      color: #5a2450;
+      font-size: 15px;
+    }
+    a.btn {
+      display: inline-block;
+      background: #ff4da6;
+      color: #ffe6f7;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 15px;
+      box-shadow: 0 14px 30px rgba(255,77,166,0.35);
+    }
+    a.btn:hover {
+      background: #ff2c95;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Pink Polaroid</h1>
+    <p>Tap below to open the full camera + playlist experience in a new tab ✨</p>
+    <a class="btn"
+       href="https://pink-polaroid.streamlit.app"
+       target="_blank"
+       rel="noopener noreferrer">
+      Open the Pink Polaroid app ↗
+    </a>
+  </div>
+</body>
 </html>
