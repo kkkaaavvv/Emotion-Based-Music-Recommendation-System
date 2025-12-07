@@ -1,294 +1,251 @@
-/* Google fonts close to Canva vibe */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600;700&family=Great+Vibes&family=Baloo+2:wght@400;600;700&display=swap');
+/* =========================
+   Polaroid + Modern Pastel Theme (Animations + Sparkles)
+   Primary accent: #FDA4B8 (baby pink)
+   ========================= */
 
-:root {
-  --pink-bg: linear-gradient(135deg, #f9b3ff 0%, #ffb8c7 40%, #ffe0b5 100%);
-  --soft-pink: #ffe9f1;
-  --accent-pink: #ff4da6;
-  --accent-pink-dark: #ff2c95;
-  --text-main: #ff1f70;
-  --text-dark: #5a2450;
-  --card: #ffffff;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@400;700&family=Dancing+Script:wght@400;700&display=swap');
+
+:root{
+  --primary: #FDA4B8;   /* baby pink */
+  --accent-dark: #F77F9C;
+  --cream: #FFF4D1;
+  --peach: #FFD59E;
+  --sage: #CBD689;
+  --card: rgba(255,255,255,0.98);
+  --muted: #6b4f4f;
+  --film: rgba(10,6,6,0.02);
 }
 
-/* globally */
+/* base + gentle grain */
 body, .stApp {
+  background: linear-gradient(180deg, #FBFAF8 0%, #FFF4F6 45%, #FFFDF9 100%);
+  font-family: 'Poppins', sans-serif;
+  color: #2b2b2b;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.stApp::before{
+  /* subtle paper texture overlay (very light) */
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.02), transparent 10%);
+  pointer-events: none;
+}
+
+/* big header */
+.header {
+  max-width: 980px;
+  margin: 28px auto 12px auto;
+  padding: 6px 18px;
+}
+.title-row { display:flex; align-items:center; gap:18px; }
+.logo-emoji { font-size:46px; transform: translateY(-6px); }
+.site-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 40px;
   margin: 0;
-  padding: 0;
-  font-family: 'DM Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #fffafc;
+  color: var(--accent-dark);
+  letter-spacing: 0.6px;
+}
+.site-sub { margin:0; color:var(--muted); opacity:0.9; }
+
+/* container + card */
+.container {
+  max-width: 980px;
+  margin: 20px auto;
+  padding: 10px;
+}
+.card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 14px 40px rgba(40,20,20,0.06);
+  border: 1px solid rgba(250,180,200,0.06);
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
-/* remove default streamlit padding */
-.block-container {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  max-width: 1100px !important;
+/* camera area */
+.camera-box {
+  display:flex;
+  gap:18px;
+  align-items:flex-start;
+  justify-content:center;
+  margin-bottom: 18px;
 }
 
-/* ---------------- HERO ---------------- */
-
-.hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--pink-bg);
-}
-
-.hero-inner {
-  text-align: center;
-  padding: 60px 24px;
-}
-
-.hero-line {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(38px, 6vw, 64px);
-  color: #ffffff;
-  line-height: 1.2;
-}
-
-/* ---------------- CAMERA SECTION ---------------- */
-
-.camera-section {
-  background: var(--soft-pink);
-  padding: 60px 16px 80px;
-}
-
-.camera-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 32px;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.camera-text {
-  flex: 1 1 320px;
-  color: var(--text-main);
-}
-
-.camera-text h2 {
-  font-family: 'Baloo 2', cursive;
-  font-size: 32px;
-  line-height: 1.1;
-  margin: 0 0 10px;
-}
-
-/* polaroid frame */
-.camera-polaroid-wrapper {
-  flex: 1 1 320px;
-  display: flex;
-  justify-content: center;
-}
-
-.camera-polaroid {
-  background: #fdfdfd;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-  padding: 10px 10px 24px;
-  width: 320px;
-  display: flex;
-  flex-direction: column;
-}
-
-.camera-top {
-  height: 8px;
-  border-radius: 12px 12px 0 0;
-  background: #ffe5f4;
-}
-
-.camera-bottom {
-  margin-top: 10px;
-  text-align: center;
-}
-
-.camera-caption {
-  font-family: 'Great Vibes', cursive;
-  font-size: 26px;
-  color: var(--text-main);
-}
-
-/* style the Streamlit camera widget to sit nicely like the photo */
-[data-testid="stCameraInput"] {
-  margin-top: 10px;
-  background: #f7f7f7;
-  border-radius: 14px;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,0.04);
-  padding: 6px 6px 10px;
-}
-
-[data-testid="stCameraInput"] > div {
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-/* camera button inside widget */
-[data-testid="stCameraInput"] button {
-  background: var(--accent-pink) !important;
-  color: #ffe6f7 !important;
-  font-weight: 600;
-  border-radius: 999px !important;
-  border: none !important;
-  padding: 8px 20px !important;
-  box-shadow: 0 8px 18px rgba(255,77,166,0.3);
-}
-
-[data-testid="stCameraInput"] button:hover {
-  background: var(--accent-pink-dark) !important;
-}
-
-/* dark strip behind text → make transparent-ish */
-[data-testid="stCameraInput"] > div > div:last-child {
-  background: transparent !important;
-}
-
-/* ---------------- RESULT SECTION ---------------- */
-
-.result-section {
-  padding: 60px 16px 80px;
-  background: #ffffff;
-}
-
-.result-header {
-  max-width: 1100px;
-  margin: 0 auto 32px;
-}
-
-.result-sub {
-  font-size: 14px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--text-main);
-  font-weight: 700;
-}
-
-.result-title {
-  font-family: 'Baloo 2', cursive;
-  font-size: 36px;
-  color: var(--text-main);
-  margin: 6px 0 0;
-}
-
-.result-mood {
-  display: inline-block;
-  margin-left: 8px;
-  padding-bottom: 4px;
-  border-bottom: 3px dotted #ff98c5;
-}
-
-/* layout */
-.result-layout {
-  max-width: 1100px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  align-items: flex-start;
-}
-
-/* left: cover */
-.result-left {
-  flex: 0 0 260px;
-}
-
-.result-cover {
-  width: 100%;
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-  object-fit: cover;
-}
-
-.result-cover.placeholder {
-  height: 260px;
-  background: linear-gradient(135deg,#ffd6f3,#ffe9f1);
-}
-
-/* right: playlist info */
-.result-right {
-  flex: 1 1 320px;
-  background: #fff7fb;
-  border-radius: 18px;
-  padding: 18px 20px 22px;
-  box-shadow: 0 14px 30px rgba(0,0,0,0.06);
-}
-
-.playlist-title {
-  margin: 0 0 10px;
-  font-size: 22px;
-  color: var(--text-dark);
-  font-weight: 700;
-}
-
-/* scroll area for tracks + embed */
-.playlist-scroll {
-  max-height: 340px;
-  overflow-y: auto;
-  padding-right: 4px;
-}
-
-.track-list {
-  padding-left: 18px;
-  margin: 0 0 12px;
-  color: var(--text-dark);
-  font-size: 14px;
-}
-
-.track-list li {
-  margin-bottom: 4px;
-}
-
-/* embed */
-.spotify-embed {
-  margin-top: 8px;
-}
-
-/* button */
-.playlist-button-row {
-  margin-top: 14px;
-  text-align: right;
-}
-
-.spotify-link-btn {
-  display: inline-block;
-  background: var(--accent-pink);
-  color: #ffe6f7;
-  text-decoration: none;
-  padding: 9px 18px;
+/* mood pill */
+.mood-pill {
+  display:inline-block;
+  padding: 8px 12px;
   border-radius: 999px;
-  font-size: 14px;
-  font-weight: 600;
-  box-shadow: 0 10px 24px rgba(255,77,166,0.28);
+  background: linear-gradient(90deg, rgba(253,164,184,0.12), rgba(255,210,200,0.05));
+  border: 1px solid rgba(253,164,184,0.18);
+  color: var(--accent-dark);
+  font-weight:600;
+  margin-bottom: 12px;
 }
 
-.spotify-link-btn:hover {
-  background: var(--accent-pink-dark);
+/* loader text style */
+.loader-text {
+  color: #8b4a63;
+  font-weight:600;
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-
-@media (max-width: 800px) {
-  .hero {
-    min-height: 70vh;
-  }
-  .camera-inner {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  .camera-polaroid-wrapper {
-    width: 100%;
-  }
-  .camera-polaroid {
-    width: 100%;
-    max-width: 360px;
-    margin: 0 auto;
-  }
-  .result-layout {
-    flex-direction: column;
-  }
-  .result-left {
-    flex: 1 1 auto;
-  }
+/* sparkle animation container (floating sparkles) */
+.sparkles {
+  position: absolute;
+  pointer-events: none;
+  top: 8%;
+  right: 6%;
+  width: 160px;
+  height: 160px;
+  opacity: 0.9;
 }
+
+/* keyframes */
+@keyframes floatUp {
+  0% { transform: translateY(6px) rotate(0deg); opacity: 0.0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(-16px) rotate(8deg); opacity: 0; }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes pop {
+  0% { transform: scale(0.98); opacity: 0; }
+  60% { transform: scale(1.03); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* polaroid grid */
+.polaroid-wrap {
+  display:flex;
+  gap:22px;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin-top: 18px;
+}
+
+/* polaroid base */
+.polaroid {
+  width: 300px;
+  background: white;
+  border-radius: 10px;
+  padding: 14px 14px 18px 14px;
+  box-shadow: 0 20px 50px rgba(40,20,20,0.08);
+  transform-origin: center;
+  transition: transform 220ms ease, box-shadow 220ms ease;
+  border: 1px solid rgba(10,10,10,0.03);
+  position: relative;
+  margin: 8px;
+  animation: pop .28s ease;
+  overflow: visible;
+}
+
+/* tilts */
+.polaroid.tilt-1 { transform: rotate(-2deg); }
+.polaroid.tilt-2 { transform: rotate(1deg); }
+.polaroid.tilt-3 { transform: rotate(-1.5deg); }
+.polaroid.tilt-4 { transform: rotate(2deg); }
+
+/* image + polaroid look */
+.polaroid .photo {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 6px;
+  border-bottom: 12px solid #fff;
+  display:block;
+  background: linear-gradient(180deg,#fff,#f9f6f6);
+}
+
+/* tape */
+.polaroid .tape {
+  position:absolute;
+  left: calc(50% - 28px);
+  top: -8px;
+  width: 56px;
+  height: 20px;
+  background: linear-gradient(90deg, rgba(250,240,245,1), rgba(250,240,245,0.96));
+  border-radius: 4px;
+  transform: rotate(-4deg);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+  opacity: 0.98;
+}
+
+/* caption, meta */
+.polaroid .caption {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px;
+  color: var(--accent-dark);
+  text-align:center;
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+.polaroid .meta {
+  text-align:center;
+  color: #7b5858;
+  font-size:13px;
+}
+
+/* track list + icons */
+.polaroid ul {
+  list-style:none;
+  padding-left:0;
+  margin: 6px 0 8px 0;
+}
+.polaroid li {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+  color:#2f2f2f;
+  padding: 6px 0;
+  transition: transform .15s ease, color .15s ease;
+}
+.polaroid li:hover { transform: translateX(6px); color: var(--accent-dark); }
+
+/* animated sparkle dots placed inside polaroid */
+.polaroid .tiny-sparkle {
+  position:absolute;
+  width:8px; height:8px; border-radius:99px;
+  background: linear-gradient(90deg,#fff, var(--primary));
+  box-shadow: 0 6px 18px rgba(249,157,144,0.16);
+  opacity: .9;
+  animation: floatUp 2200ms linear infinite;
+}
+.polaroid .sparkle-1 { left: 12px; top: 12px; animation-delay: 0ms; }
+.polaroid .sparkle-2 { right: 18px; top: 40px; animation-delay: 260ms; }
+.polaroid .sparkle-3 { left: 22px; bottom: 80px; animation-delay: 520ms; }
+
+/* embed area */
+.player-embed { margin-top: 8px; display:flex; justify-content:center; }
+
+/* play button */
+.btn-play {
+  background: linear-gradient(90deg,var(--primary),var(--accent-dark));
+  color:white; border:none; padding:10px 16px; border-radius: 12px;
+  font-weight:600; cursor:pointer;
+  box-shadow: 0 8px 18px rgba(253,164,184,0.12);
+}
+
+/* hover lift */
+.polaroid:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 30px 70px rgba(40,20,20,0.12);
+}
+
+/* footer */
+.footer {
+  text-align:center; margin-top:18px; color:#7b5b5b; opacity:0.9;
+  font-size:13px;
+}
+
+/* responsive */
+@media (max-width:720px){
+  .polaroid { width: 92%; }
+  .polaroid .photo { height: 220px; }
+}
+
